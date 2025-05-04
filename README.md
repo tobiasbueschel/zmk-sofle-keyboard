@@ -73,14 +73,14 @@ Contrary to the original Sofle, this version uses [ZMK](https://zmk.dev) instead
 
 If you want to customize the keymap, you have three options:
 
-1. [ZMK Studio](https://zmk.studio)
+**1. [ZMK Studio](https://zmk.studio)**
 
 - Allows you to do runtime keymap configuration for ZMK devices i.e., you can make changes without the need to flash new firmware onto your keyboard
 - First MVP released to the general public in November 2024, does not yet support all ZMK features
 - Here is a list of features currently supported: https://zmk.dev/docs/features/studio#capabilities
 - NOTE: ZMK Studio does not yet support export `.keymap` files, hence, many people suggest to first try out your keymap layout with ZMK Studio and once you like it port over the changes to a `.keymap` file so that you can compile a custom ZMK firmware, version control the configuration and flash your keyboard with this firmware.
 
-2. [nickcoutsos/keymap-editor](https://github.com/nickcoutsos/keymap-editor)
+**2. [nickcoutsos/keymap-editor](https://github.com/nickcoutsos/keymap-editor)**
 
 - A web based graphical editor of ZMK keymaps, which leverages GitHub Actions to compile the firmware.
 - You can try it here: https://nickcoutsos.github.io/keymap-editor/
@@ -88,7 +88,7 @@ If you want to customize the keymap, you have three options:
 - NOTE: If you want to use the updated Keymap-Editor app you will need to authorize it with your GitHub account so that it can push updates and trigger the GitHub Action.
 - If you do not want this you could self-host an older version of `keymap-editor` from when the source code was shared or do a firmware update without the graphical editor as described in option 3
 
-3. [Flashing of ZMK firmware without a graphical editor](https://zmk.dev/docs/user-setup)
+**3. [Flashing of ZMK firmware without a graphical editor](https://zmk.dev/docs/user-setup)**
 
 - This is the recommended process of setting up and configuring ZMK as described in the documentation
 - NOTE: If you've forked this repository, you can manually edit the [eyelash_sofle.keymap](./config/eyelash_sofle.keymap) file and push any changes, which will trigger GitHub actions to build the new firmware file
