@@ -114,7 +114,7 @@ For more context, these Reddit threads are helpful (they apply to the Corne but 
 
 ### Current keymap configuration
 
-<img src="keymap-drawer/sofle.svg" >
+<img src="keymap-drawer/eyelash_sofle.svg" >
 
 ## Changelog
 
