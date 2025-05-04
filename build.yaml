@@ -14,3 +14,6 @@ include:
 
   - board: eyelash_sofle_left
     shield: settings_reset
+
+  - board: eyelash_sofle_right
+    shield: settings_reset

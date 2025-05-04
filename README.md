@@ -97,6 +97,21 @@ To flash the firmware for option 2 & 3, download the firmware from GitHub Action
 
 _"Once this happens, copy the correct UF2 file (e.g. left or right if working on a split), and paste it onto the root of that USB mass storage device. Once the flash is complete, the controller should unmount the USB storage, automatically restart and load your newly flashed firmware. It is recommended that you test your keyboard works over USB first to rule out hardware issues, before trying to connect to it wirelessly."_ Complete instructions can be found here: https://zmk.dev/docs/user-setup#installing-the-firmware
 
+**Important**
+
+It is important to follow this sequence of flashing:
+
+1. Flash the left side with the file: `nice_view-eyelash_sofle_left-zmk.uf2`
+2. Flash the left side with the file: `eyelash_sofle_studio_left.uf2`
+3. Flash the right side with the file: `nice_view_custom-eyelash_sofle_right-zmk.uf2`
+
+A fourth file will also be created called `settings_reset-eyelash_sofle_left-zmk.uf2` which you can use to reset your left Sofle. If you do this, please ensure you flash this file first and then go through steps 1-3 above afterwards.
+
+For more context, these Reddit threads are helpful (they apply to the Corne but the Sofle is from the same vendor):
+
+- https://www.reddit.com/r/ErgoMechKeyboards/comments/1ju67yx/aliexpress_eyelash_corne_basic_beginner_guide/
+- https://www.reddit.com/r/ErgoMechKeyboards/comments/1hgs176/what_to_expect_from_the_cheapest_aliexpress_corne/
+
 ### Current keymap configuration
 
 <img src="keymap-drawer/sofle.svg" >
