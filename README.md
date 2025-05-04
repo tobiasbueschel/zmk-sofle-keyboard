@@ -105,7 +105,7 @@ It is important to follow this sequence of flashing:
 2. Flash the left side with the file: `eyelash_sofle_studio_left.uf2`
 3. Flash the right side with the file: `nice_view_custom-eyelash_sofle_right-zmk.uf2`
 
-A fourth file will also be created called `settings_reset-eyelash_sofle_left-zmk.uf2` which you can use to reset your left Sofle. If you do this, please ensure you flash this file first and then go through steps 1-3 above afterwards.
+Two other files will also be created called `settings_reset-eyelash_sofle_left-zmk.uf2` which you can use to reset your left Sofle and `settings_reset-eyelash_sofle_right-zmk.uf2` for the right side. If you do this, please ensure you flash these files first and then flash the respectice files for each side afterwards.
 
 For more context, these Reddit threads are helpful (they apply to the Corne but the Sofle is from the same vendor):
 
