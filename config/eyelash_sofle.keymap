@@ -62,7 +62,7 @@
 &kp C_MUTE  &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
             >;
 
-            display-name = "layer1";
+            display-name = "LAYER1";
             sensor-bindings = <&scroll_encoder>;
         };
 
@@ -75,6 +75,7 @@
 &trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans      &trans     &trans
             >;
 
+            display-name = "LAYER2";
             sensor-bindings = <&scroll_encoder>;
         };
 
@@ -86,6 +87,8 @@
 &trans    &trans                  &trans                  &trans    &trans    &trans    &trans  &trans          &trans            &trans        &trans              &trans            &trans
 &trans    &trans                  &trans                  &trans    &trans    &trans    &trans  &trans          &trans            &trans        &trans              &trans
             >;
+
+            display-name = "LAYER3";
         };
     };
 };
