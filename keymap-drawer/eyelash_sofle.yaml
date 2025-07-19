@@ -205,7 +205,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - PREVIOUS
   - PLAY PAUSE
-  - NEXT
+  - $$mdi:skip-next$$
   - VOLUME DOWN
   - VOLUME UP
   - MUTE
