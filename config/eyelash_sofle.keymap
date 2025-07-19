@@ -68,11 +68,11 @@
 
         layer_2 {
             bindings = <
-&kp TILDE  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &kp F6  &kp F7  &kp F8      &kp F9     &kp F10      &trans
-&trans     &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans  &trans  &kp F11     &kp F12    &kp UNDER    &kp PLUS
-&trans     &out OUT_USB  &out OUT_BLE    &trans        &trans        &trans          &mmv MOVE_LEFT   &trans  &trans  &trans      &trans     &kp LBRC     &kp RBRC
-&trans     &sys_reset    &trans          &bootloader   &trans        &trans          &mmv MOVE_RIGHT  &trans  &trans  &sys_reset  &soft_off  &bootloader  &trans
-&trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans      &trans     &trans
+&kp TILDE  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &kp F6          &kp F7            &kp F8            &kp F9            &kp F10           &trans
+&trans     &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans          &trans            &kp F11           &kp F12           &kp UNDER         &kp PLUS
+&trans     &out OUT_USB  &out OUT_BLE    &trans        &trans        &trans          &mmv MOVE_LEFT   &kp LEFT_ARROW  &kp DOWN_ARROW    &kp UP_ARROW      &kp RIGHT_ARROW   &kp LBRC          &kp RBRC
+&trans     &sys_reset    &trans          &bootloader   &trans        &trans          &mmv MOVE_RIGHT  &trans          &trans            &sys_reset        &soft_off         &bootloader       &trans
+&trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans          &trans            &trans            &trans            &trans
             >;
 
             display-name = "LAYER2";
@@ -81,11 +81,11 @@
 
         layer_3 {
             bindings = <
-&trans    &kp C_BRIGHTNESS_DEC    &kp C_BRIGHTNESS_INC    &kp F3    &kp F4    &kp F5    &trans  &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT    &kp K_VOLUME_DOWN   &kp K_VOLUME_UP    &kp K_MUTE
-&trans    &trans                  &trans                  &trans    &trans    &trans    &trans  &trans          &trans            &trans        &trans              &trans            &trans
-&trans    &trans                  &trans                  &trans    &trans    &trans    &trans  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp UP_ARROW  &kp RIGHT_ARROW     &trans            &trans
-&trans    &trans                  &trans                  &trans    &trans    &trans    &trans  &trans          &trans            &trans        &trans              &trans            &trans
-&trans    &trans                  &trans                  &trans    &trans    &trans    &trans  &trans          &trans            &trans        &trans              &trans
+&kp ESC   &kp C_BRIGHTNESS_DEC    &kp C_BRIGHTNESS_INC    &kp F3    &kp F4    &kp F5    &trans  &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT        &kp K_VOLUME_DOWN   &kp K_VOLUME_UP     &kp K_MUTE
+&trans    &trans                  &trans                  &trans    &trans    &trans    &trans  &trans          &kp KP_NUMBER_7   &kp KP_NUMBER_8   &kp KP_NUMBER_9     &kp KP_MULTIPLY     &kp KP_DIVIDE
+&trans    &trans                  &trans                  &trans    &trans    &trans    &trans  &trans          &kp KP_NUMBER_4   &kp KP_NUMBER_5   &kp KP_NUMBER_6     &kp KP_MINUS        &kp KP_CLEAR
+&trans    &trans                  &trans                  &trans    &trans    &trans    &trans  &trans          &kp KP_NUMBER_1   &kp KP_NUMBER_2   &kp KP_NUMBER_3     &kp KP_PLUS         &kp KP_ENTER
+&trans    &trans                  &trans                  &trans    &trans    &trans    &trans  &trans          &trans            &kp KP_NUMBER_0   &kp KP_DOT          &kp KP_EQUAL
             >;
 
             display-name = "LAYER3";
