@@ -8,3 +8,4 @@ zephyr/
 !zephyr/modules.yml
 .DS_Store
 mario-peripheral-animation/
+config/eyelash_sofle.private.keymap
