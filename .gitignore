@@ -1,5 +1,10 @@
-build/
+build/*
+!build/.gitkeep
 zmk/
 modules/
 tools/
 .west/
+zephyr/
+!zephyr/modules.yml
+.DS_Store
+mario-peripheral-animation/

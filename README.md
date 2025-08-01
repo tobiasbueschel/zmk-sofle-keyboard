@@ -88,12 +88,70 @@ If you want to customize the keymap, you have three options:
 - NOTE: If you want to use the updated Keymap-Editor app you will need to authorize it with your GitHub account so that it can push updates and trigger the GitHub Action.
 - If you do not want this you could self-host an older version of `keymap-editor` from when the source code was shared or do a firmware update without the graphical editor as described in option 3
 
-**3. [Flashing of ZMK firmware without a graphical editor](https://zmk.dev/docs/user-setup)**
+**3. [Manually flashing ZMK firmware](https://zmk.dev/docs/user-setup)**
+
+**Option 1: Building on GitHub Actions**
 
 - This is the recommended process of setting up and configuring ZMK as described in the documentation
 - NOTE: If you've forked this repository, you can manually edit the [eyelash_sofle.keymap](./config/eyelash_sofle.keymap) file and push any changes, which will trigger GitHub actions to build the new firmware file
 
-To flash the firmware for option 2 & 3, download the firmware from GitHub Actions once it has successfully completed. _"Then put your board into bootloader mode by double clicking the reset button (either on the MCU board itself, or the one that is part of your keyboard). The controller should appear in your OS as a new USB storage device."_
+Once the GitHub Action pipeline has completed, you can download all firmware files.
+
+**Option 2: Building locally**
+
+You can also build the firmware on your local machine using Docker. Please find the official instructions to set up your environment [here](https://zmk.dev/docs/development/local-toolchain/setup/container).
+
+These are the commands you will need to run:
+
+```shell
+# Clone ZMK firmware repository and ensure all commands are run from this folder
+git clone git@github.com:zmkfirmware/zmk.git
+
+cd zmk
+```
+
+```shell
+docker volume create --driver local -o o=bind -o type=none -o device="$HOME/Development/oss/zmk-sofle-keyboard/config" zmk-config
+docker volume create --driver local -o o=bind -o type=none -o device="$HOME/Development/oss/zmk-sofle-keyboard/" zmk-modules
+
+# Start the container and open a shell session
+docker exec -w /workspaces/zmk -it $(devcontainer up --workspace-folder "$HOME/Development/forks/zmk" | jq -r '.containerId') /bin/bash
+```
+
+```shell
+cp /workspaces/zmk-config/west.yml app/west.yml
+
+west init -l app/ # Initialization
+west update       # Update modules
+
+# Restart container
+exit
+```
+
+```shell
+docker restart <container-id>
+docker exec -w /workspaces/zmk/app -it <container-id> /bin/bash
+```
+
+```shell
+# Build firmware
+west build -d build/left -p -b eyelash_sofle_left -- -DSHIELD=nice_view -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"
+west build -d build/right -p -b eyelash_sofle_right -- -DSHIELD=nice_view_custom -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/"
+west build -d build/studio_left -p -b eyelash_sofle_left -- -DSHIELD=nice_view -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n -DZMK_CONFIG="/workspaces/zmk-config/"
+west build -d build/settings_reset_left -p -b eyelash_sofle_left -- -DSHIELD=settings_reset -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"
+west build -d build/settings_reset_right -p -b eyelash_sofle_right -- -DSHIELD=settings_reset -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"
+
+# Copy firmware to build/ directory
+cp build/left/zephyr/zmk.uf2 /workspaces/zmk-modules/build/nice_view-eyelash_sofle_left-zmk.uf2
+cp build/right/zephyr/zmk.uf2 /workspaces/zmk-modules/build/nice_view_custom-eyelash_sofle_right-zmk.uf2
+cp build/studio_left/zephyr/zmk.uf2 /workspaces/zmk-modules/build/eyelash_sofle_studio_left.uf2
+cp build/settings_reset_left/zephyr/zmk.uf2 /workspaces/zmk-modules/build/settings_reset-eyelash_sofle_left-zmk.uf2
+cp build/settings_reset_right/zephyr/zmk.uf2 /workspaces/zmk-modules/build/settings_reset-eyelash_sofle_right-zmk.uf2
+```
+
+**Loading the firmware to your keyboard**
+
+_"Then put your board into bootloader mode by double clicking the reset button (either on the MCU board itself, or the one that is part of your keyboard). The controller should appear in your OS as a new USB storage device."_
 
 _"Once this happens, copy the correct UF2 file (e.g. left or right if working on a split), and paste it onto the root of that USB mass storage device. Once the flash is complete, the controller should unmount the USB storage, automatically restart and load your newly flashed firmware. It is recommended that you test your keyboard works over USB first to rule out hardware issues, before trying to connect to it wirelessly."_ Complete instructions can be found here: https://zmk.dev/docs/user-setup#installing-the-firmware
 
@@ -103,7 +161,7 @@ When flashing, it is very important to follow this exact sequence:
 
 1. (Optional) Reset all settings `settings_reset-eyelash_sofle_left-zmk.uf2` (you will have to pair your keyboard again)
 2. Flash the new keymap `nice_view-eyelash_sofle_left-zmk.uf2`
-3. (Optional) Enable ZMK Studio support
+3. (Optional) Enable ZMK Studio support by flashing `eyelash_sofle_studio_left.uf2`
 
 **Right side**
 
