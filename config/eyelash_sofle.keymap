@@ -30,6 +30,22 @@
 
 / {
 
+    macros {
+        personal_email: personal_email {
+            compatible = "zmk,behavior-macro";
+            label = "PERSONAL_EMAIL";
+            #binding-cells = <0>;
+            bindings = <&kp P &kp E &kp R &kp S &kp O &kp N &kp A &kp L &kp E &kp M &kp A &kp I &kp L &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+        };
+
+        spam_email: spam_email {
+            compatible = "zmk,behavior-macro";
+            label = "SPAM_EMAIL";
+            #binding-cells = <0>;
+            bindings = <&kp S &kp P &kp A &kp M &kp E &kp M &kp A &kp I &kp L &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+        };
+    };
+
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
@@ -69,10 +85,10 @@
         layer_2 {
             bindings = <
 &kp TILDE  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &kp F6          &kp F7            &kp F8            &kp F9            &kp F10           &trans
-&trans     &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans          &trans            &kp F11           &kp F12           &kp UNDER         &kp PLUS
-&trans     &out OUT_USB  &out OUT_BLE    &trans        &trans        &trans          &mmv MOVE_LEFT   &kp LEFT_ARROW  &kp DOWN_ARROW    &kp UP_ARROW      &kp RIGHT_ARROW   &kp LBRC          &kp RBRC
-&trans     &sys_reset    &trans          &bootloader   &trans        &trans          &mmv MOVE_RIGHT  &trans          &trans            &sys_reset        &soft_off         &bootloader       &trans
-&trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans          &trans            &trans            &trans            &trans
+&trans     &bt BT_CLR    &bt BT_CLR_ALL  &spam_email   &personal_email    &trans          &mmv MOVE_DOWN   &trans          &trans            &kp F11           &kp F12           &kp UNDER         &kp PLUS
+&trans     &out OUT_USB  &out OUT_BLE    &trans        &trans             &trans          &mmv MOVE_LEFT   &kp LEFT_ARROW  &kp DOWN_ARROW    &kp UP_ARROW      &kp RIGHT_ARROW   &kp LBRC          &kp RBRC
+&trans     &sys_reset    &trans          &bootloader   &trans             &trans          &mmv MOVE_RIGHT  &trans          &trans            &sys_reset        &soft_off         &bootloader       &trans
+&trans     &trans        &trans          &trans        &trans             &trans          &mkp LCLK        &trans          &trans            &trans            &trans            &trans
             >;
 
             display-name = "LAYER2";
