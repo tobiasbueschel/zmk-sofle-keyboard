@@ -4,6 +4,11 @@ zmk/
 modules/
 tools/
 .west/
+.venv/
+__pycache__/
+.env*
+config/private*
+config/secret*
 zephyr/
 !zephyr/modules.yml
 .DS_Store

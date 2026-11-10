@@ -2,13 +2,36 @@ name: Build ZMK firmware
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - "config/**"
       - "boards/**"
       - "zephyr/**"
       - "build.yaml"
+      - "tests/**"
+      - .github/workflows/build.yml
+  pull_request:
+    paths:
+      - "config/**"
+      - "boards/**"
+      - "zephyr/**"
+      - "build.yaml"
+      - "tests/**"
       - .github/workflows/build.yml
 
 jobs:
+  config-tests:
+    name: Validate keyboard configuration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install configuration test dependencies
+        run: |
+          python3 -m venv .venv
+          .venv/bin/python -m pip install -r tests/requirements.txt
+      - name: Check metadata, build variants, wiring and keymap
+        run: .venv/bin/python -m unittest discover -s tests -v
+
   build:
+    needs: config-tests
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
